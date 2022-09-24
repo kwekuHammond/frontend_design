@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_design/constants/routes.dart';
+import 'package:frontend_design/views/login.dart';
 
 void main() {
   runApp(MaterialApp(
     title: 'UI Design',
     theme: ThemeData(primaryColor: const Color.fromARGB(255, 11, 88, 126)),
     home: const HomePage(),
+    routes: {
+      loginUIRoute: (context) => const LoginView(),
+    },
   ));
 }
 
@@ -29,7 +34,9 @@ class HomePage extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(loginUIRoute);
+                  },
                   child: const Text("Login UI"),
                 ),
               ),
@@ -40,7 +47,7 @@ class HomePage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: const Text("Login UI"),
+                  child: const Text("Other View"),
                 ),
               ),
             ),
@@ -48,19 +55,5 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class Button extends StatefulWidget {
-  const Button({super.key});
-
-  @override
-  State<Button> createState() => _ButtonState();
-}
-
-class _ButtonState extends State<Button> {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: const Text("Login UI"));
   }
 }
