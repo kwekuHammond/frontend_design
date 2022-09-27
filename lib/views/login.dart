@@ -9,6 +9,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size; //Gets total size of screen
@@ -72,6 +73,7 @@ class _LoginViewState extends State<LoginView> {
                               child: Text(
                                 "Login",
                                 style: TextStyle(
+                                  color: primaryColor,
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -84,35 +86,85 @@ class _LoginViewState extends State<LoginView> {
                               left: 30,
                               top: 100,
                             ),
-                            child: Wrap(
-                              alignment: WrapAlignment.center,
-                              spacing: 30,
-                              runSpacing: 20,
-                              children: [
-                                const TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Email",
-                                    hintStyle: TextStyle(
-                                      color: primaryColor,
+                            // LOGIN FORM
+                            child: Form(
+                              key: _formKey,
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                spacing: 30,
+                                runSpacing: 10,
+                                children: [
+                                  TextFormField(
+                                    keyboardType: TextInputType.emailAddress,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'enter you emaail';
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                      icon: Icon(Icons.email),
+                                      labelText: 'Enter Email',
+                                      // hintText: "Email",
+                                      hintStyle: TextStyle(
+                                        color: primaryColor,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(
-                                      color: primaryColor,
+                                  TextFormField(
+                                    keyboardType: TextInputType.visiblePassword,
+                                    obscureText: true,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'enter password';
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                      icon: Icon(Icons.lock),
+                                      labelText: "Enter Password",
+                                      // hintText: "Password",
+                                      hintStyle: TextStyle(
+                                        color: primaryColor,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 40),
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text("Sign in"),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: TextButton(
+                                      onPressed: () {},
+                                      child: const Text(
+                                        "Forgotten Password?",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 40),
+                                    child: ElevatedButton.icon(
+                                      label: const Text(
+                                        "Sign in",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      icon: const Icon(Icons.login, size: 15),
+                                      onPressed: () {
+                                        if (_formKey.currentState!.validate()) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text('Processing Data'),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
