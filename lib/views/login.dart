@@ -43,12 +43,12 @@ class _LoginViewState extends State<LoginView> {
                     margin: const EdgeInsets.only(top: 50),
                     child: const Center(
                       child: Text(
-                        "Firebase",
+                        "SCHOOL GUIDE",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 40,
+                          fontSize: 35,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Romans',
+                          fontFamily: 'Roboto',
                         ),
                       ),
                     ),
@@ -71,10 +71,10 @@ class _LoginViewState extends State<LoginView> {
                             child: Padding(
                               padding: EdgeInsets.only(top: 40),
                               child: Text(
-                                "Login",
+                                "Student Login",
                                 style: TextStyle(
                                   color: primaryColor,
-                                  fontSize: 35,
+                                  fontSize: 30,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
