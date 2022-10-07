@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_design/components/route.dart';
 import 'package:frontend_design/utils/constants.dart';
+import 'package:frontend_design/views/signup.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -188,7 +190,10 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await Navigator.of(context)
+                                  .push(createRoute(const Signup()));
+                            },
                             child: const Text(
                               "Sign Up",
                               style: TextStyle(
@@ -203,7 +208,7 @@ class _LoginViewState extends State<LoginView> {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
