@@ -24,9 +24,8 @@ class HomePage extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () async {
-                    await Navigator.of(context)
-                        .push(createRoute(const LoginView()));
+                  onPressed: () {
+                    Navigator.of(context).push(createRoute(const LoginView()));
                   },
                   child: const Text("Login UI"),
                 ),

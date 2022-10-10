@@ -143,8 +143,10 @@ class _LoginViewState extends State<LoginView> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 40),
+                                  Container(
+                                    width: screenSize.width * 0.5,
+                                    height: 50,
+                                    margin: const EdgeInsets.only(top: 40),
                                     child: ElevatedButton.icon(
                                       label: const Text(
                                         "Sign in",
